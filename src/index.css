@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Hex palette (Brazil-inspired) */
+    --color-primary: #009739;
+    --color-accent: #FEDD00;
+    --color-secondary: #012169;
+    --color-white: #FFFFFF;
+    --color-dark: #0F172A;
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 145 100% 29%; /* Verde Brasil #009739 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 223 100% 22%; /* Azul #012169 */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 47 100% 50%; /* Amarelo #FEDD00 */
+    --accent-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 145 100% 29%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Hex palette available in dark mode too */
+    --color-primary: #009739;
+    --color-accent: #FEDD00;
+    --color-secondary: #012169;
+    --color-white: #FFFFFF;
+    --color-dark: #0F172A;
+
+    --background: 222.2 84% 4.9%; /* #0F172A */
+    --foreground: 0 0% 98%;
+    --card: 222.2 84% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 145 100% 29%; /* Verde Brasil */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 223 100% 22%; /* Azul */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 47 100% 50%; /* Amarelo */
+    --accent-foreground: 222.2 84% 4.9%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 145 100% 29%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Palette utility mappings (Brazil-inspired) */
+  .bg-primary { background-color: var(--color-primary); }
+  .text-primary { color: var(--color-primary); }
+  .text-primary-foreground { color: var(--color-white); }
+  .bg-primary\/10 { background-color: rgba(0,151,57,0.1); }
+  .bg-primary\/20 { background-color: rgba(0,151,57,0.18); }
+  .hover\:bg-primary\/90:hover { background-color: rgba(0,151,57,0.9); }
+
+  .bg-accent { background-color: var(--color-accent); }
+  .text-accent-foreground { color: var(--color-dark); }
+  .bg-accent\/90 { background-color: rgba(254,221,0,0.9); }
+  .bg-accent\/20 { background-color: rgba(254,221,0,0.18); }
+  .hover\:bg-accent\/90:hover { background-color: rgba(254,221,0,0.9); }
+
+  .bg-secondary { background-color: var(--color-secondary); }
+  .text-secondary { color: var(--color-secondary); }
+  .text-secondary-foreground { color: var(--color-white); }
+  .bg-secondary\/20 { background-color: rgba(1,33,105,0.12); }
+  .text-destructive { color: hsl(var(--destructive)); }
+  .bg-destructive\/20 { background-color: rgba(220,38,38,0.12); }
+
+  /* Status-specific utilities (light backgrounds + adaptive text for dark mode) */
+  .bg-have { background-color: rgba(0,151,57,0.12); }
+  .text-have { color: var(--color-dark); }
+  .dark .text-have { color: var(--color-white); }
+
+  .bg-want { background-color: rgba(220,38,38,0.08); }
+  .text-want { color: rgb(220,38,38); }
+  .dark .text-want { color: var(--color-white); }
+
+  .bg-duplicate { background-color: rgba(6,182,212,0.12); }
+  .text-duplicate { color: rgb(6,182,212); }
+  .dark .text-duplicate { color: var(--color-white); }
+
+  /* Variable-backed UI surfaces */
+  .bg-card { background-color: hsl(var(--card)); }
+  .text-card-foreground { color: hsl(var(--card-foreground)); }
+}
